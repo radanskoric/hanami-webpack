@@ -5,5 +5,8 @@
     "webpack": "*",
     "webpack-dev-server": "*",
     "webpack-manifest-plugin": "*"
+  },
+  "scripts": {
+    "start:dev": "webpack-dev-server -d"
   }
 }

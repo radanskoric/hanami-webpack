@@ -2,7 +2,7 @@
 
 :warning: **This is a very experimental version, but it works, so, be aware!**
 
-This plugin will help you to use [Webpack](webpack.github.io) as your asset pipeline for Hanami with [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)  for development.
+This plugin will help you to use [Webpack](webpack.github.io) as your asset pipeline for Hanami with [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html) for development.
 
 It'll work without any problem with your existent assets using the [hanami/assets](https://github.com/hanami/assets).
 
@@ -14,15 +14,15 @@ I'll assume that you already have the Node.js installed.
 2. Run `bundle install`.
 3. Copy the base Webpack config **[webpack.config.sample.js](./webpack.config.sample.js)** and **[package.sample.json](./package.sample.json)** on your app root (removing the `.sample` in the name).
 4. Run `npm install`.
-5. Run `bundle exec hanami serve` and profite.
+5. Run `bundle exec hanami serve` and profit.
 
 ## Usage
 
-On development, this plugin will try to start the **[webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)** with your Hanami server. You can disable this behavior (see [configuration section](#configuration)).
+On development, this plugin will start the `serve:dev` npm script with your Hanami server. If you used the example package.json this will start **[webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)** in development mode. You can disable this behavior (see [configuration section](#configuration)).
 
-You will need use the `webpack_asset_path` helper on your templates to get the correct bundle path.
+You will need to use the `webpack_asset_path` helper on your templates to get the correct bundle path.
 
-Let's say that you have a [bundle](http://webpack.github.io/docs/configuration.html#entry) with the name `web.people`. You should place on your template:
+Let's say that you have a [bundle](http://webpack.github.io/docs/configuration.html#entry) with the name `web.people`. You should include it in your template with:
 
 ```erb
 <script src="<%= webpack_asset_path('web.people') %>"></script>
@@ -44,7 +44,7 @@ All plugin configuration is done by the following ENV vars:
 | `WEBPACK_MANIFEST_FILE` | `webpack_manifest.json` | The name of the manifest file that exposes the assets path to Hanami. |
 
 ## With Heroku
-Just run the command below to configure your Heroku app. This command will set your Hanami app to serve the assets (you probably already done this) and will set the Ruby and Node.js buildpacks.
+Just run the command below to configure your Heroku app. This command will set your Hanami app to serve the assets (you probably already did this) and will set the Ruby and Node.js buildpacks.
 
 ```
 heroku config:set SERVE_STATIC_ASSETS=true && heroku buildpacks:set --index 1 heroku/nodejs && heroku buildpacks:set --index 2 heroku/ruby
